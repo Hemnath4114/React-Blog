@@ -1,8 +1,11 @@
 const About = () => {
     return (
         <main className='About'>
-            <h2>About</h2>
-            <p style={{ marginTop: "1rem" }}>This blog app is a project in the Learn React tutorial series.</p>
+            <h1>About</h1>
+            <h2>Hemnath with ❤️</h2>
+            <p style={{ marginTop: "1rem" }}>This project is created during my learning process.</p>
+            <br />
+            <p>For more contact : <a href="https://www.linkedin.com/in/hemnath-marimuthu-in/" className="ldn">Hemnath</a></p>
         </main>
     )
 }

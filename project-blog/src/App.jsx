@@ -83,7 +83,7 @@ const App = () => {
   }
   return (
     <div className='App'>
-      <Header  title="React JS Blog" width={width}/>
+      <Header  title="React Blog" width={width}/>
       <Nav  search={search} setSearch={setSearch}/>
       <Routes>
         <Route exact path='/' element={<Home 

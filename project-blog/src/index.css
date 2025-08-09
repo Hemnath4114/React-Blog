@@ -1,4 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+:root {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-accent: #252525;
+  --accent-color: #66d8f5;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b3b3b3;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --shadow-color: rgba(0, 0, 0, 0.6);
+  --radius: 10px;
+  --transition: all 0.25s ease;
+}
 
 * {
   margin: 0;
@@ -13,10 +26,11 @@ html {
 body {
   min-height: 100vh;
   font-family: 'Open Sans', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
-  background-color: #efefef;
 }
 
 #root {
@@ -28,19 +42,20 @@ body {
 
 .App {
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  border: 1px solid #333;
-  box-shadow: 0px 0px 15px gray;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  background-color: var(--bg-secondary);
+  box-shadow: 0px 0px 25px var(--shadow-color);
+  overflow: hidden;
 }
 
 .Header, .Footer {
   width: 100%;
-  background-color: #66d8f5;
+  background-color: var(--bg-accent);
   padding: 1rem;
   display: flex;
   justify-content: space-between;
@@ -49,25 +64,28 @@ body {
 
 .Header h1 {
   font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--accent-color);
 }
 
 .Header svg {
   font-size: 2rem;
+  color: var(--accent-color);
 }
 
 .Footer {
   padding: 0.75rem;
   display: grid;
   place-content: center;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
 }
 
 .Nav {
   width: 100%;
-  background-color: #333;
+  background-color: var(--bg-primary);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
 }
 
 .searchForm {
@@ -80,9 +98,17 @@ body {
   width: 100%;
   min-height: 48px;
   font-size: 1rem;
-  padding: 0.25rem;
-  border-radius: 0.25rem;
-  outline: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-accent);
+  color: var(--text-primary);
+  transition: var(--transition);
+}
+
+.searchForm input[type="text"]:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 10px rgba(102, 216, 245, 0.3);
 }
 
 .searchForm label {
@@ -91,8 +117,7 @@ body {
 }
 
 .Nav ul {
-  color: #fff;
-  list-style-type: none;
+  list-style: none;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -100,29 +125,24 @@ body {
 
 .Nav li {
   padding: 1rem;
+  transition: var(--transition);
+}
+
+.Nav li a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: var(--transition);
 }
 
 .Nav li:hover, 
 .Nav li:focus {
-  padding: 1rem;
-}
-
-.Nav li a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.Nav li:hover, 
-.Nav li:focus, 
-.Nav li:hover a, 
-.Nav li:focus a  {
-  background-color: #eee;
-  color: #333;
+  background-color: var(--bg-accent);
+  border-radius: var(--radius);
 }
 
 .Nav li:hover a, 
 .Nav li:focus a {
-  cursor: pointer;
+  color: var(--accent-color);
 }
 
 .Home, .NewPost, .PostPage, .About, .Missing {
@@ -130,34 +150,28 @@ body {
   flex-grow: 1;
   padding: 1rem;
   overflow-y: auto;
-  background-color: #fff;
+  background-color: var(--bg-secondary);
 }
 
 .post {
   margin-top: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .Home .post a {
   text-decoration: none;
+  color: var(--text-primary);
+  transition: var(--transition);
 }
 
-.Home .post a, 
-.Home .post a:visited {
-  color: #000;
-}
-
-.post:first-child {
-  margin-top: 0;
-}
-
-.post:last-child {
-  border-bottom: none;
+.Home .post a:hover {
+  color: var(--accent-color);
 }
 
 .postDate {
   font-size: 0.75rem;
+  color: var(--text-secondary);
   margin-top: 0.25rem;
 }
 
@@ -178,58 +192,91 @@ body {
 .newPostForm textarea {
   font-family: 'Open Sans', sans-serif;
   width: 100%;
-  min-height: 48px;
   font-size: 1rem;
-  padding: 0.25rem;
-  border-radius: 0.25rem;
-  margin-right: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-accent);
+  color: var(--text-primary);
   outline: none;
+  transition: var(--transition);
+}
+
+.newPostForm input:focus, 
+.newPostForm textarea:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 10px rgba(102, 216, 245, 0.3);
 }
 
 .newPostForm textarea {
-  height: 100px;
+  height: 120px;
 }
 
 .newPostForm button {
   margin-top: 1rem;
   height: 48px;
   min-width: 48px;
-  border-radius: 10px;
+  border-radius: var(--radius);
   padding: 0.5rem;
   font-size: 1rem;
   cursor: pointer;
+  background-color: var(--accent-color);
+  border: none;
+  color: #000;
+  font-weight: 600;
+  transition: var(--transition);
 }
 
-.Missing p, .PostPage p, .NewPost p {
-  margin-top: 1rem;
+.newPostForm button:hover {
+  background-color: #55c4e0;
 }
 
 .PostPage button {
+  margin-top: 1.5rem;
   height: 48px;
   min-width: 48px;
-  border-radius: 0.25rem;
-  padding: 0.5rem;
-  margin-right: 0.5rem;
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
   font-size: 1rem;
-  color: #fff;
   cursor: pointer;
+  color: #fff;
+  border: none;
+  transition: var(--transition);
 }
 
 .deleteButton {
-  background-color: red;
+  background-color: #e74c3c;
+}
+
+.deleteButton:hover {
+  background-color: #c0392b;
 }
 
 .editButton {
-  background-color: #333;
+  background-color: var(--accent-color);
+  margin-right: 2rem;
+  color: #000;
+}
+
+.editButton:hover {
+  background-color: #55c4e0;
 }
 
 .statusMsg {
   margin-top: 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.ldn{
+  margin-left: .5rem;
+  color: whitesmoke;
+  font-weight: 400;
 }
 
 @media only screen and (min-width: 610px) {
   html {
-    font-size: 22px;
+    font-size: 18px;
   }
 
   .Header h1 {
@@ -238,30 +285,13 @@ body {
 
   .Nav {
     flex-direction: row;
-    flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-  }
-
-  .Nav ul {
-    text-align: right;
-  }
-
-  .Nav li:hover, 
-  .Nav li:focus, 
-  .Nav li:hover a, 
-  .Nav li:focus a  {
-    background-color: #eee;
-    color: #333;
   }
 
   .searchForm {
     width: 50%;
     padding: .5rem 0;
-  }
- 
-  .searchForm input[type="text"] {
-    margin-left: 0.5rem;
   }
 
   .newPostForm textarea {
@@ -270,9 +300,7 @@ body {
 }
 
 @media only screen and (min-width: 992px) {
-
   .Header svg {
     font-size: 3rem;
   }
-
 }
